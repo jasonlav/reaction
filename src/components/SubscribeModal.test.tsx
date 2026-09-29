@@ -10,7 +10,7 @@ vi.mock("../api", () => ({
 
 describe("SubscribeModal component", () => {
   test("renders form", () => {
-    render(<SubscribeModal isOpen={true} />);
+    render(<SubscribeModal isOpen={true} onClose={() => {}} />);
     const emailLabel = screen.getByLabelText(/email/i);
     expect(emailLabel).toBeInTheDocument();
 
@@ -22,7 +22,9 @@ describe("SubscribeModal component", () => {
   });
 
   test("calls subscribe API on form submission", async () => {
-    const { getByRole } = render(<SubscribeModal isOpen={true} />);
+    const { getByRole } = render(
+      <SubscribeModal isOpen={true} onClose={() => {}} />,
+    );
     const emailInput = getByRole("textbox", { name: /email/i });
     const submitButton = getByRole("button", { name: /subscribe/i });
 

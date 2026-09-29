@@ -2,9 +2,9 @@ import Modal from "./Modal";
 import type { Props as ModalProps } from "./Modal";
 import { subscribe } from "../api";
 
-type Props = Omit<ModalProps, "children">;
+type Props = Pick<ModalProps, "isOpen" | "onClose" | "className">;
 
-export default function SubscribeModal({ isOpen }: Props) {
+export default function SubscribeModal({ isOpen, onClose, className }: Props) {
   const handleSubmit = (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -13,7 +13,7 @@ export default function SubscribeModal({ isOpen }: Props) {
   };
 
   return (
-    <Modal isOpen={isOpen}>
+    <Modal isOpen={isOpen} onClose={onClose} className={className}>
       <h2>Subscribe</h2>
       <p>Get weekly updates and exclusive content.</p>
       <form onSubmit={handleSubmit}>

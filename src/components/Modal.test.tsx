@@ -3,26 +3,38 @@ import Modal from "./Modal";
 
 describe("Modal component", () => {
   test("renders hidden when closed", () => {
-    render(<Modal isOpen={false}>Test Content</Modal>);
+    render(
+      <Modal isOpen={false} onClose={() => {}}>
+        Test Content
+      </Modal>,
+    );
     const dialog = screen.queryByRole("dialog");
     expect(dialog).not.toBeInTheDocument();
   });
 
   test("renders visible when open", () => {
-    render(<Modal isOpen={true}>Test Content</Modal>);
+    render(
+      <Modal isOpen={true} onClose={() => {}}>
+        Test Content
+      </Modal>,
+    );
     const dialog = screen.getByRole("dialog");
     expect(dialog).toBeInTheDocument();
   });
 
   test("renders children correctly", () => {
-    render(<Modal isOpen={true}>Test Content</Modal>);
+    render(
+      <Modal isOpen={true} onClose={() => {}}>
+        Test Content
+      </Modal>,
+    );
     const dialog = screen.getByRole("dialog");
     expect(dialog).toHaveTextContent("Test Content");
   });
 
   test("renders with custom className", () => {
     render(
-      <Modal isOpen={true} className="custom-class">
+      <Modal isOpen={true} onClose={() => {}} className="custom-class">
         Test Content
       </Modal>,
     );
