@@ -19,6 +19,7 @@ beforeAll(() => {
 
   HTMLDialogElement.prototype.close = function () {
     this.removeAttribute("open");
+    this.dispatchEvent(new Event("close"));
   };
 });
 

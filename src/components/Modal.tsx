@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import Styles from "./Modal.module.css";
 
 export type Props = {
   isOpen: boolean;
@@ -28,8 +29,16 @@ export default function Modal({ isOpen, onClose, children, className }: Props) {
   }, [onClose]);
 
   return (
-    <dialog ref={dialog} className={className}>
-      {children}
-    </dialog>
+    <>
+      <dialog ref={dialog} className={`${Styles.modal} ${className ?? ""}`}>
+        {children}
+        <button
+          className={Styles.close}
+          onClick={() => dialog.current?.close()}
+        >
+          close
+        </button>
+      </dialog>
+    </>
   );
 }

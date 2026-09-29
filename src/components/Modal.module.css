@@ -1,0 +1,12 @@
+.modal {
+  anchor-name: --my-anchor;
+  max-height: calc(100vh - 2rem);
+  max-width: calc(100vw - 2rem);
+}
+
+.close {
+  position: fixed;
+  position-anchor: --my-anchor;
+  top: calc(anchor(start) - 1.5rem);
+  right: calc(anchor(end) - 1.5rem);
+}
