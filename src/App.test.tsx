@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import App from "./App";
 
 describe("App component", () => {
@@ -28,5 +29,13 @@ describe("App component", () => {
     const termsLink = screen.getByText(/Terms of Service/i);
     expect(termsLink).toBeInTheDocument();
     expect(termsLink).toHaveAttribute("href", "/terms");
+  });
+
+  test("subscribe modal appears", async () => {
+    render(<App message="Hello, world!" />);
+
+    await userEvent.click(screen.getByRole("button", { name: /Subscribe/i }));
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toBeInTheDocument();
   });
 });

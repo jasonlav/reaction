@@ -1,3 +1,6 @@
+import { useState } from "react";
+import Button from "./components/Button";
+import SubscribeModal from "./components/SubscribeModal";
 import Features from "./components/Features";
 import Footer from "./components/Footer";
 
@@ -8,6 +11,7 @@ type Props = {
 const date = new Date();
 
 export default function App({ message }: Props) {
+  const [isSubscribeModalOpen, setIsSubscribeModalOpen] = useState(false);
   return (
     <>
       <main>
@@ -32,6 +36,17 @@ export default function App({ message }: Props) {
                   "Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.",
               },
             ]}
+          />
+        </section>
+        <section>
+          <h2>Subscribe</h2>
+          <SubscribeModal
+            isOpen={isSubscribeModalOpen}
+            onClose={() => setIsSubscribeModalOpen(false)}
+          />
+          <Button
+            label="Subscribe"
+            onClick={() => setIsSubscribeModalOpen(true)}
           />
         </section>
       </main>
