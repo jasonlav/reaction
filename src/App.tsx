@@ -3,5 +3,5 @@ type Props = {
 };
 
 export default function App({ message }: Props) {
-  return <div>{message}</div>;
+  return <h1>{message}</h1>;
 }
