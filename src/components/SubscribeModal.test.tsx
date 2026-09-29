@@ -1,26 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import SubscribeModal from "./SubscribeModal";
-import { beforeAll, beforeEach, vi } from "vitest";
+import { vi } from "vitest";
 import userEvent from "@testing-library/user-event";
 import { subscribe } from "../api";
-
-beforeAll(() => {
-  HTMLDialogElement.prototype.show = function () {
-    this.setAttribute("open", "");
-  };
-
-  HTMLDialogElement.prototype.showModal = function () {
-    this.setAttribute("open", "");
-  };
-
-  HTMLDialogElement.prototype.close = function () {
-    this.removeAttribute("open");
-  };
-});
-
-beforeEach(() => {
-  vi.clearAllMocks();
-});
 
 vi.mock("../api", () => ({
   subscribe: vi.fn(),
