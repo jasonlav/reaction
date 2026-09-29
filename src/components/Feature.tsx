@@ -1,4 +1,4 @@
-type Props = {
+export type Props = {
   title: string;
   tags?: string[];
   description: string;
