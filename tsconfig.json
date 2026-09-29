@@ -12,7 +12,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "jsx": "react-jsx",
-    "types": ["vite", "jest", "@testing-library/jest-dom"]
+    "types": ["vite", "jest", "@testing-library/jest-dom", "@types/css-modules"]
   },
-  "include": ["src"]
+  "include": ["src/**/*"]
 }
